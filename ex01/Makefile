@@ -6,7 +6,7 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/07/31 05:36:56 by dario            ###   ########.fr        #
+#    Updated: 2025/07/31 20:15:02 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS		=	main.cpp PhoneBook.cpp Contact.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 
 define SIGNATURE
-
       _                                 _
      | |                               | |
    __| | __ _ _ __ _ __ ___   __ _ _ __| |_ _ 
@@ -61,22 +60,23 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(MAGENTA)All $(NAME) source files compiled ✅$(RST)\033[0K\r"
-	@echo -e "\n$(BG_GREEN)$(NAME) compiled!$(BG_RST)"
-	@echo -e "$(MAGENTA)$$SIGNATURE$(RST)"
+	@echo "\n$(BG_GREEN)$(NAME) compiled!$(BG_RST)"
+	@echo "$(MAGENTA)$$SIGNATURE$(RST)"
 
-%.o: %.c
-	@printf "$(MAGENTA)Compiling $< ✅$(RST)\033[0K\r"; $(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(MAGENTA)Compiling $< ✅$(RST)\033[0K\r"
 
 clean:
-	@echo -e "$(BG_BLUE)Cleaning...$(BG_RST)"
+	@echo "$(BG_BLUE)Cleaning...$(BG_RST)"
 	@$(RM) $(OBJS)
-	@echo -e "$(CYAN)libft objs cleaned!$(BG_RST)🧹"
-	@echo -e "$(CYAN)$(NAME) objs cleaned!$(BG_RST)🧹"
+	@echo "$(CYAN)libft objs cleaned!$(BG_RST)🧹"
+	@echo "$(CYAN)$(NAME) objs cleaned!$(BG_RST)🧹"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo -e "$(CYAN)$(NAME) fully cleaned!$(BG_RST)🧹"
-	@echo -e "$(BG_GREEN)All cleaned!$(BG_RST)"
+	@echo "$(CYAN)$(NAME) fully cleaned!$(BG_RST)🧹"
+	@echo "$(BG_GREEN)All cleaned!$(BG_RST)"
 
 re: fclean all
 

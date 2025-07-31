@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:43:48 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 06:42:27 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 21:03:35 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,63 @@
 # define BG_CYAN   "\033[46m"
 # define BG_WHITE  "\033[47m"
 
-void	PrintContactInfo(Contact &contact)
+// void	PrintContactInfo(Contact &contact)
+// {
+// 	std::cout << "First Name : " << contact.GetFirstName() << std::endl;
+// 	std::cout << "Last Name : " << contact.GetLastName() << std::endl;
+// 	std::cout << "NickName : " << contact.GetNickName() << std::endl;
+// 	std::cout << "Phone Number : " << contact.GetPhoneNumber() << std::endl;
+// 	std::cout << "Darkest Secret : " << contact.GetDarkestSecret() << std::endl;
+// }
+
+void	cmd_add(PhoneBook &phoneBook)
 {
-	std::cout << "First Name : " << contact.GetFirstName() << std::endl;
-	std::cout << "Last Name : " << contact.GetLastName() << std::endl;
-	std::cout << "NickName : " << contact.GetNickName() << std::endl;
-	std::cout << "Phone Number : " << contact.GetPhoneNumber() << std::endl;
-	std::cout << "Darkest Secret : " << contact.GetDarkestSecret() << std::endl;
+		std::string	firstName, lastName, nickName, secret;
+	int			phoneNumber;
+	std::cout << BG_CYAN "Introduce their first name:" BG_RST << std::endl;
+	std::cin >> firstName;
+	std::cout << BG_CYAN "Introduce their last name:" BG_RST << std::endl;
+	std::cin >> lastName;
+	std::cout << BG_CYAN "Introduce their nickname:" BG_RST << std::endl;
+	std::cin >> nickName;
+	std::cout << BG_CYAN "Introduce their phone number:" BG_RST << std::endl;
+	std::cin >> phoneNumber;
+	while (std::cin.fail() || phoneNumber < 0)
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << BG_RED "This is not a phone number!" BG_RST << std::endl;
+		std::cout << BG_CYAN "Introduce their phone number:" BG_RST << std::endl;
+		std::cin >> phoneNumber;
+	}
+	std::cout << BG_CYAN "Introduce their darkest secret:" BG_RST << std::endl;
+	std::cin >> secret;
+	Contact	contact(firstName, lastName, nickName, secret, phoneNumber);
+	phoneBook.AddContact(contact);
+	std::cout << BG_GREEN "Added" GREEN " " << firstName
+		<< RST BG_GREEN " to the contact list!" BG_RST << std::endl;
+}
+
+void	cmd_search(PhoneBook &phoneBook)
+{
+	int	index;
+	phoneBook.DisplayContacts(8);
+	std::cout << BG_CYAN "Introduce the index number:" BG_RST << std::endl;
+	std::cin >> index;
+	while (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << BG_RED "This is not a number!" BG_RST << std::endl;
+		std::cout << BG_CYAN "Introduce the index number:" BG_RST << std::endl;
+		std::cin >> index;
+	}
+	phoneBook.SearchContact(index);
 }
 
 int	main(void)
 {
-	PhoneBook	phoneBook;
+	PhoneBook	phoneBook(0, false);
 	std::string	cmd;
 
 	while (true)
@@ -51,42 +96,11 @@ int	main(void)
 			<< BLUE "(ADD, SEARCH, EXIT)" RST << std::endl;
 		std::cin >> cmd;
 		if (cmd == "ADD")
-		{
-			std::string	firstName, lastName, nickName, secret;
-			int			phoneNumber;
-			std::cout << BG_CYAN "Introduce their first name:" BG_RST << std::endl;
-			std::cin >> firstName;
-			std::cout << BG_CYAN "Introduce their last name:" BG_RST << std::endl;
-			std::cin >> lastName;
-			std::cout << BG_CYAN "Introduce their nickname:" BG_RST << std::endl;
-			std::cin >> nickName;
-			std::cout << BG_CYAN "Introduce their phone number:" BG_RST << std::endl;
-			std::cin >> phoneNumber;
-			while (std::cin.fail())
-			{
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				std::cout << BG_RED "This is not a phone number!" BG_RST << std::endl;
-				std::cout << BG_CYAN "Introduce their phone number:" BG_RST << std::endl;
-				std::cin >> phoneNumber;
-			}
-			std::cout << BG_CYAN "Introduce their darkest secret:" BG_RST << std::endl;
-			std::cin >> secret;
-			Contact	contact(firstName, lastName, nickName, secret, phoneNumber);
-			phoneBook.AddContact(contact);
-		}
+			cmd_add(phoneBook);
 		else if (cmd == "SEARCH")
-		{
-			int	index;
-			phoneBook.DisplayContacts(8);
-			std::cout << BG_CYAN "Introduce the index:" BG_RST << std::endl;
-			std::cin >> index;
-			phoneBook.SearchContact(index);
-		}
+			cmd_search(phoneBook);
 		else if (cmd == "EXIT")
 			return (0);
-		else
-			continue;
 	}
 	return (0);
 }

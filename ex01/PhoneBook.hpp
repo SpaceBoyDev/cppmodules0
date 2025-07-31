@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:18:17 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 06:31:23 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 20:10:13 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ class PhoneBook {
 
 	public:
 
-	PhoneBook();
+	PhoneBook(int cI, bool lF);
 	~PhoneBook();
 
-	int			contactNbr = 0;
-	bool		contactListFull = false;
+	int			contactNbr;
+	bool		contactListFull;
 	Contact		*GetContactList();
-	std::string	TruncateString(std::string str, int maxLen);
+	std::string	TruncateString(std::string str, size_t maxLen);
 	void		AddContact(Contact &contact);
 	void		SearchContact(int nbr);
 	void		DisplayContacts(int max);
