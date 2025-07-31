@@ -6,8 +6,72 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:17:54 by dario             #+#    #+#             */
-/*   Updated: 2025/07/30 23:21:30 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 06:32:49 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+#include <iomanip>
+
+PhoneBook::PhoneBook() {}
+
+PhoneBook::~PhoneBook() {}
+
+Contact *PhoneBook::GetContactList()
+{
+	return _contactList;
+}
+
+std::string PhoneBook::TruncateString(std::string str, int maxLen)
+{
+	if (str.length() > maxLen)
+		return (str.substr(0, maxLen - 1) + ".");
+	return str;
+}
+
+void PhoneBook::AddContact(Contact &contact)
+{
+	if (contactNbr < 8)
+		GetContactList()[contactNbr++] = contact;
+	else
+	{
+		contactNbr = 0;
+		GetContactList()[contactNbr++] = contact;
+	}
+}
+
+void PhoneBook::SearchContact(int nbr)
+{
+	
+}
+
+void PhoneBook::DisplayContacts(int max)
+{
+	std::cout << "╔══════════════════════════════════════════╗"
+		<< std::endl;
+	std::cout << std::setw(10) << "Index" << "║"
+		<< std::setw(10) << "First Name" << "║"
+		<< std::setw(10) << "Last Name" << "║"
+		<< std::setw(10) << "Nickname"
+		<< std::endl;
+	for (size_t i = 0; i < max; i++)
+	{
+		std::cout << std::setw(10) << i << "║"
+		<< std::setw(10) << TruncateString(GetContactList()[i].GetFirstName(), 10) << "║"
+		<< std::setw(10) << GetContactList()[i].GetLastName() << "║"
+		<< std::setw(10) << GetContactList()[i].GetNickName()
+		<< std::endl;
+	}
+	std::cout << "╚══════════════════════════════════════════╝"
+		<< std::endl;
+}
+
+void PhoneBook::DisplayContactInfo(Contact &contact)
+{
+	std::cout << "First Name : " << contact.GetFirstName() << std::endl;
+	std::cout << "Last Name : " << contact.GetLastName() << std::endl;
+	std::cout << "NickName : " << contact.GetNickName() << std::endl;
+	std::cout << "Phone Number : " << contact.GetPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret : " << contact.GetDarkestSecret() << std::endl;
+}

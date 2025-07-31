@@ -6,14 +6,15 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:43:48 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 00:16:59 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 06:28:45 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <limits>
+
 #include "Contact.hpp"
-#include "PhoneBook.cpp"
+#include "PhoneBook.hpp"
 
 # define RST	"\033[0m"
 # define RED	"\033[1;31m"
@@ -37,7 +38,6 @@ void	PrintContactInfo(Contact &contact)
 	std::cout << "NickName : " << contact.GetNickName() << std::endl;
 	std::cout << "Phone Number : " << contact.GetPhoneNumber() << std::endl;
 	std::cout << "Darkest Secret : " << contact.GetDarkestSecret() << std::endl;
-
 }
 
 int	main(void)
@@ -73,7 +73,16 @@ int	main(void)
 			std::cout << BG_CYAN "Introduce their darkest secret:" BG_RST << std::endl;
 			std::cin >> secret;
 			Contact	contact(firstName, lastName, nickName, secret, phoneNumber);
-			PrintContactInfo(contact);
+			phoneBook.AddContact(contact);
 		}
+		else if (cmd == "SEARCH")
+		{
+			phoneBook.DisplayContacts(4);
+		}
+		else if (cmd == "EXIT")
+			return (0);
+		else
+			continue;
 	}
+	return (0);
 }

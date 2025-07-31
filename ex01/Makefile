@@ -6,7 +6,7 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/07/30 23:44:54 by dario            ###   ########.fr        #
+#    Updated: 2025/07/31 05:36:56 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RM			=	rm -f
 
 VALFLAGS	=	--tool=helgrind --tool=drd
 
-SRCS		=	PhoneBook.cpp Contact.cpp main.cpp
+SRCS		=	main.cpp PhoneBook.cpp Contact.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
 
