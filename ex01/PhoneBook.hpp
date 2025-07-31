@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:18:17 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 20:10:13 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 21:10:57 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PhoneBook {
 	void		DisplayContactInfo(Contact &contact);
 
 	private:
-	Contact	_contactList[8];
+	Contact		_contactList[8];
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:43:48 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 21:03:35 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 21:09:16 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,24 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-# define RST	"\033[0m"
-# define RED	"\033[1;31m"
-# define BLUE	"\033[1;34m"
-# define GREEN	"\033[1;32m"
-# define YELLOW	"\033[1;33m"
+# define RST		"\033[0m"
+# define RED		"\033[1;31m"
+# define BLUE		"\033[1;34m"
+# define GREEN		"\033[1;32m"
+# define YELLOW		"\033[1;33m"
 
-# define BG_RST    "\033[0m"
-# define BG_RED    "\033[41m"
-# define BG_GREEN  "\033[42m"
-# define BG_YELLOW "\033[43m"
-# define BG_BLUE   "\033[44m"
-# define BG_MAGENTA "\033[45m"
-# define BG_CYAN   "\033[46m"
-# define BG_WHITE  "\033[47m"
-
-// void	PrintContactInfo(Contact &contact)
-// {
-// 	std::cout << "First Name : " << contact.GetFirstName() << std::endl;
-// 	std::cout << "Last Name : " << contact.GetLastName() << std::endl;
-// 	std::cout << "NickName : " << contact.GetNickName() << std::endl;
-// 	std::cout << "Phone Number : " << contact.GetPhoneNumber() << std::endl;
-// 	std::cout << "Darkest Secret : " << contact.GetDarkestSecret() << std::endl;
-// }
+# define BG_RST		"\033[0m"
+# define BG_RED		"\033[41m"
+# define BG_GREEN	"\033[42m"
+# define BG_YELLOW	"\033[43m"
+# define BG_BLUE	"\033[44m"
+# define BG_MAGENTA	"\033[45m"
+# define BG_CYAN	"\033[46m"
+# define BG_WHITE	"\033[47m"
 
 void	cmd_add(PhoneBook &phoneBook)
 {
-		std::string	firstName, lastName, nickName, secret;
+	std::string	firstName, lastName, nickName, secret;
 	int			phoneNumber;
 	std::cout << BG_CYAN "Introduce their first name:" BG_RST << std::endl;
 	std::cin >> firstName;

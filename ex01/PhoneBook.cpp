@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:17:54 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 20:36:54 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 21:06:47 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 #include <iomanip>
 
-PhoneBook::PhoneBook(int cI, bool lF) : contactNbr(cI), contactListFull(lF) {}
+PhoneBook::PhoneBook(int contactIndex, bool listFull)
+	: contactNbr(contactIndex), contactListFull(listFull) {}
 
 PhoneBook::~PhoneBook() {}
 
