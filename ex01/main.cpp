@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:43:48 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 06:28:45 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 06:42:27 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,11 @@ int	main(void)
 		}
 		else if (cmd == "SEARCH")
 		{
-			phoneBook.DisplayContacts(4);
+			int	index;
+			phoneBook.DisplayContacts(8);
+			std::cout << BG_CYAN "Introduce the index:" BG_RST << std::endl;
+			std::cin >> index;
+			phoneBook.SearchContact(index);
 		}
 		else if (cmd == "EXIT")
 			return (0);

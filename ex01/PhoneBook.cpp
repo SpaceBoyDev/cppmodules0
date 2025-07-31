@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:17:54 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 06:32:49 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 06:40:52 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ void PhoneBook::AddContact(Contact &contact)
 
 void PhoneBook::SearchContact(int nbr)
 {
-	
+	std::cout << "First Name => " << GetContactList()[nbr].GetFirstName() << std::endl;
+	std::cout << "Last Name => " << GetContactList()[nbr].GetLastName() << std::endl;
+	std::cout << "NickName => " << GetContactList()[nbr].GetNickName() << std::endl;
+	std::cout << "Phone Number => " << GetContactList()[nbr].GetPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret => " << GetContactList()[nbr].GetDarkestSecret() << std::endl;
 }
 
 void PhoneBook::DisplayContacts(int max)
