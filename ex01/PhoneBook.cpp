@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:17:54 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 06:40:52 by dario            ###   ########.fr       */
+/*   Updated: 2025/07/31 06:55:32 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void PhoneBook::AddContact(Contact &contact)
 		GetContactList()[contactNbr++] = contact;
 	else
 	{
+		contactListFull = true;
 		contactNbr = 0;
 		GetContactList()[contactNbr++] = contact;
 	}
@@ -43,6 +44,11 @@ void PhoneBook::AddContact(Contact &contact)
 
 void PhoneBook::SearchContact(int nbr)
 {
+	if (!contactListFull && nbr >= contactNbr)
+	{
+		std::cout << "Invalid index :(" << std::endl;
+		return;
+	}
 	std::cout << "First Name => " << GetContactList()[nbr].GetFirstName() << std::endl;
 	std::cout << "Last Name => " << GetContactList()[nbr].GetLastName() << std::endl;
 	std::cout << "NickName => " << GetContactList()[nbr].GetNickName() << std::endl;
@@ -61,6 +67,8 @@ void PhoneBook::DisplayContacts(int max)
 		<< std::endl;
 	for (size_t i = 0; i < max; i++)
 	{
+		if (!contactListFull && i >= contactNbr)
+			break;
 		std::cout << std::setw(10) << i << "║"
 		<< std::setw(10) << TruncateString(GetContactList()[i].GetFirstName(), 10) << "║"
 		<< std::setw(10) << GetContactList()[i].GetLastName() << "║"
