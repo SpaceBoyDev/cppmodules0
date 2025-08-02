@@ -6,7 +6,7 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/07/29 20:57:47 by dario            ###   ########.fr        #
+#    Updated: 2025/08/02 22:48:03 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ $(NAME): $(OBJS)
 	@echo -e "\n$(BG_GREEN)$(NAME) compiled!$(BG_RST)"
 	@echo -e "$(MAGENTA)$$SIGNATURE$(RST)"
 
-%.o: %.c
+%.o: %.cpp
 	@printf "$(MAGENTA)Compiling $< ✅$(RST)\033[0K\r"; $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
