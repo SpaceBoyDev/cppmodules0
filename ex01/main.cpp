@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:43:48 by dario             #+#    #+#             */
-/*   Updated: 2025/07/31 21:09:16 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:35:05 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	cmd_add(PhoneBook &phoneBook)
 	}
 	std::cout << BG_CYAN "Introduce their darkest secret:" BG_RST << std::endl;
 	std::cin >> secret;
-	Contact	contact(firstName, lastName, nickName, secret, phoneNumber);
+	Contact	contact(firstName, lastName, nickName, phoneNumber, secret);
 	phoneBook.AddContact(contact);
 	std::cout << BG_GREEN "Added" GREEN " " << firstName
 		<< RST BG_GREEN " to the contact list!" BG_RST << std::endl;
