@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:21:06 by dario             #+#    #+#             */
-/*   Updated: 2025/08/02 22:32:35 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/02 22:34:04 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 Contact::Contact() {}
 
 Contact::Contact(std::string fN, std::string lN, std::string nN, int pN, std::string s)
-	: _firstName(fN), _lastName(lN), _nickName(nN), _phoneNumber(pN), _secret(s) {}
+	: _firstName(fN), _lastName(lN), _nickName(nN), _phoneNumber(pN), _secret(s)
+{}
 
 Contact::~Contact() {}
 
