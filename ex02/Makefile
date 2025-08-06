@@ -6,11 +6,11 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/08/06 02:11:07 by dario            ###   ########.fr        #
+#    Updated: 2025/08/06 03:16:30 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	phonebook
+NAME		=	tests
 
 MAKEFLAGS	+=	--no-print-directory
 
