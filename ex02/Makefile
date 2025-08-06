@@ -6,7 +6,7 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/08/06 03:16:30 by dario            ###   ########.fr        #
+#    Updated: 2025/08/06 04:32:09 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,20 @@ $(NAME): $(OBJS)
 %.o: %.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(MAGENTA)Compiling $< ✅$(RST)\033[0K\r"
+
+CUT = $(shell cut -c 19- log.txt)
+
+
+check: all
+	@tmpfile=$$(mktemp); \
+	./tests | cut -c19- > $$tmpfile; \
+	if diff -c $$tmpfile 19920104_091532.log > /dev/null; then \
+		echo "✅ Todo OK :3 ✅"; \
+	else \
+		echo "❌ Diferencias encontradas ❌:"; \
+ 		cat $$tmpfile; \
+	fi; \
+	rm $$tmpfile
 
 clean:
 	@echo "$(BG_BLUE)Cleaning...$(BG_RST)"
