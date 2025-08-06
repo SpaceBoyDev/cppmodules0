@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:10:43 by dario             #+#    #+#             */
-/*   Updated: 2025/08/06 03:15:10 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/06 03:47:11 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,24 @@ int Account::getNbWithdrawals(void)
 
 void Account::displayAccountsInfos(void)
 {
+	_displayTimestamp();
+	std::cout
+		<< "accounts:" << _nbAccounts
+		<< ";total:" << _totalAmount
+		<< ";deposits:" << _totalNbDeposits
+		<< ";withdrawals:" << _totalNbWithdrawals
+		<< std::endl;
+	//[19920104_091532] accounts:8;total:12442;deposits:8;withdrawals:6
 }
 
-Account::Account(int initial_deposit) : _amount(initial_deposit)
+Account::Account(int initial_deposit)
 {
 	_accountIndex = _nbAccounts;
-	_nbDeposits = 1;
+	_nbDeposits = 0;
 	_nbWithdrawals = 0;
 
+	_amount = initial_deposit;
 	_totalAmount += initial_deposit;
-	++_totalNbDeposits;
 
 	_displayTimestamp();
 	std::cout
@@ -82,7 +90,7 @@ void Account::makeDeposit(int deposit)
 	_displayTimestamp();
 	std::cout
 		<< "index:" << _accountIndex
-		<< ";p_amount:" << _amount
+		<< ";p_amount:" << (_amount - deposit)
 		<< ";deposit:" << deposit
 		<< ";amount:" << _amount
 		<< ";nb_deposits:" << _nbDeposits
@@ -111,7 +119,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	_displayTimestamp();
 	std::cout
 		<< "index:" << _accountIndex
-		<< ";p_amount:" << _amount
+		<< ";p_amount:" << (_amount + withdrawal)
 		<< ";withdrawal:" << withdrawal
 		<< ";amount:" << _amount
 		<< ";nb_withdrawals:" << _nbDeposits
@@ -128,7 +136,14 @@ int Account::checkAmount(void) const
 
 void Account::displayStatus(void) const
 {
-	
+	_displayTimestamp();
+	std::cout
+		<< "index:" << _accountIndex
+		<< ";amount:" << _amount
+		<< ";deposits:" << _nbDeposits
+		<< ";withdrawals:" << _nbWithdrawals
+		<< std::endl;
+	//[19920104_091532] index:7;amount:8942;deposits:1;withdrawals:1
 }
 
 void Account::_displayTimestamp(void)
