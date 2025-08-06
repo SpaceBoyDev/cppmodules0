@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 02:10:43 by dario             #+#    #+#             */
-/*   Updated: 2025/08/06 02:42:58 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/06 03:15:10 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ int	Account::_totalNbWithdrawals = 0;
 
 int Account::getNbAccounts(void)
 {
-	return 0;
+	return (_nbAccounts);
 }
 
 int Account::getTotalAmount(void)
 {
-	return 0;
+	return (_totalAmount);
 }
 
 int Account::getNbDeposits(void)
 {
-	return 0;
+	return (_totalNbDeposits);
 }
 
 int Account::getNbWithdrawals(void)
 {
-	return 0;
+	return (_totalNbWithdrawals);
 }
 
 void Account::displayAccountsInfos(void)
@@ -92,16 +92,43 @@ void Account::makeDeposit(int deposit)
 
 bool Account::makeWithdrawal(int withdrawal)
 {
-	return false;
+	if (withdrawal > _amount)
+	{
+		_displayTimestamp();
+		std::cout
+			<< "index:" << _accountIndex
+			<< ";p_amount:" << _amount
+			<< ";withdrawal:refused"
+			<< std::endl;
+		return (false);
+		//[19920104_091532] index:5;p_amount:23;withdrawal:refused
+	}
+	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
+	++_totalNbWithdrawals;
+	++_nbWithdrawals;
+
+	_displayTimestamp();
+	std::cout
+		<< "index:" << _accountIndex
+		<< ";p_amount:" << _amount
+		<< ";withdrawal:" << withdrawal
+		<< ";amount:" << _amount
+		<< ";nb_withdrawals:" << _nbDeposits
+		<< std::endl;
+
+	return (true);		
+	//[19920104_091532] index:4;p_amount:1321;withdrawal:76;amount:1245;nb_withdrawals:1
 }
 
 int Account::checkAmount(void) const
 {
-	return 0;
+	return _amount;
 }
 
 void Account::displayStatus(void) const
 {
+	
 }
 
 void Account::_displayTimestamp(void)
