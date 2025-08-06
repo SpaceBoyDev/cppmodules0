@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:20:44 by dario             #+#    #+#             */
-/*   Updated: 2025/08/02 22:34:16 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/06 02:13:53 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ class Contact {
 			int pN, std::string dS);
 	~Contact();
 
-	std::string		GetFirstName();
-	std::string		GetLastName();
-	std::string		GetNickName();
-	int				GetPhoneNumber();
-	std::string		GetDarkestSecret();
+	std::string		GetFirstName(void);
+	std::string		GetLastName(void);
+	std::string		GetNickName(void);
+	int				GetPhoneNumber(void);
+	std::string		GetDarkestSecret(void);
 
 	private:
 	std::string		_firstName;

@@ -6,7 +6,7 @@
 /*   By: dario <dario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 23:17:54 by dario             #+#    #+#             */
-/*   Updated: 2025/08/02 22:35:15 by dario            ###   ########.fr       */
+/*   Updated: 2025/08/06 02:13:26 by dario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PhoneBook::PhoneBook(int cI, bool lF)
 
 PhoneBook::~PhoneBook() {}
 
-Contact *PhoneBook::GetContactList()
+Contact *PhoneBook::GetContactList(void)
 {
 	return _contactList;
 }
