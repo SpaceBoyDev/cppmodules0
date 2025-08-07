@@ -6,7 +6,7 @@
 #    By: dario <dario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 18:40:53 by dario             #+#    #+#              #
-#    Updated: 2025/08/06 04:33:49 by dario            ###   ########.fr        #
+#    Updated: 2025/08/08 01:40:50 by dario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ check: all
 clean:
 	@echo "$(BG_BLUE)Cleaning...$(BG_RST)"
 	@$(RM) $(OBJS)
-	@echo "$(CYAN)libft objs cleaned!$(BG_RST)🧹"
 	@echo "$(CYAN)$(NAME) objs cleaned!$(BG_RST)🧹"
 
 fclean: clean
